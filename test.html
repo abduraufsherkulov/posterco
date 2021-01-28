@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background: #333;
+        padding: 70px 0;
+        font: 15px/20px Arial, sans-serif;
+      }
+
+      .container {
+        margin: 0 auto;
+        width: 250px;
+        height: 200px;
+        position: relative;
+        perspective: 1000px;
+      }
+
+      .carousel {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        transform-style: preserve-3d;
+        transition: transform 1s;
+      }
+      .carousel div {
+        transform-style: preserve-3d;
+      }
+
+      .item {
+        display: block;
+        position: absolute;
+        width: 100%;
+        line-height: 200px;
+        font-size: 5em;
+        text-align: center;
+        color: #fff;
+        opacity: 0.95;
+        border-radius: 10px;
+        transition: transform 1s;
+      }
+
+      .first-slide {
+        transform: rotateY(120deg) translateZ(350px) rotateY(-120deg);
+      }
+      .second-slide {
+        transform: rotateY(240deg) translateZ(350px) rotateY(-240deg);
+      }
+      .third-slide {
+        transform: rotateY(360deg) translateZ(350px) rotateY(-360deg);
+      }
+
+      .next,
+      .prev {
+        color: #444;
+        position: absolute;
+        top: 100px;
+        padding: 1em 2em;
+        cursor: pointer;
+        background: #ccc;
+        border-radius: 5px;
+        border-top: 1px solid #fff;
+        box-shadow: 0 5px 0 #999;
+        transition: box-shadow 0.1s, top 0.1s;
+      }
+      .next:hover,
+      .prev:hover {
+        color: #000;
+      }
+      .next:active,
+      .prev:active {
+        top: 104px;
+        box-shadow: 0 1px 0 #999;
+      }
+      .next {
+        right: 5em;
+      }
+      .prev {
+        left: 5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-slide">
+      <div class="carousel-slide">
+        <div class="first-slide">
+          <img class="item" src="./imgs/img1.png" alt="" srcset="" />
+        </div>
+        <div class="second-slide">
+          <img class="item" src="./imgs/img2.png" alt="" srcset="" />
+        </div>
+        <div class="third-slide">
+          <img class="item" src="./imgs/img3.png" alt="" srcset="" />
+        </div>
+      </div>
+    </div>
+    <div class="next">Next</div>
+    <div class="prev">Prev</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+      var carousel = $('.carousel-slide'),
+        items = $('.item'),
+        currdeg = 0;
+
+      $('.next').on('click', { d: 'n' }, rotate);
+      $('.prev').on('click', { d: 'p' }, rotate);
+
+      function rotate(e) {
+        if (e.data.d == 'n') {
+          currdeg = currdeg - 120;
+        }
+        if (e.data.d == 'p') {
+          currdeg = currdeg + 120;
+        }
+        carousel.css({
+          '-webkit-transform': 'rotateY(' + currdeg + 'deg)',
+          '-moz-transform': 'rotateY(' + currdeg + 'deg)',
+          '-o-transform': 'rotateY(' + currdeg + 'deg)',
+          transform: 'rotateY(' + currdeg + 'deg)',
+        });
+        items.css({
+          '-webkit-transform': 'rotateY(' + -currdeg + 'deg)',
+          '-moz-transform': 'rotateY(' + -currdeg + 'deg)',
+          '-o-transform': 'rotateY(' + -currdeg + 'deg)',
+          transform: 'rotateY(' + -currdeg + 'deg)',
+        });
+      }
+    </script>
+  </body>
+</html>
