@@ -140,7 +140,7 @@
             <div
               class="col-sm-12 col-md order-1 order-md-2 d-flex align-items-center"
             >
-              <div class="container-slide">
+              <div id="first" class="container-slide">
                 <div class="carousel-slide">
                   <div class="first-slide">
                     <img
@@ -291,7 +291,7 @@
         <div class="container dummy">
           <div class="row">
             <div style="width: 35%">
-              <p class="text-start">
+              <p id="about-us-text" class="text-start">
                 О нас <br />
                 Мы создаём уникальные аксессуары, что в свою очередь подарит вам
                 уникальность
@@ -337,7 +337,7 @@
         </div>
       </div>
     </div>
-    <div id="toTop">
+    <div class="d-none" id="toTop">
       <a href="#fourthPage">
         <img src="./imgs/prev.svg" alt="" />
       </a>
@@ -454,14 +454,17 @@
         lazyLoad: true,
 
         onLeave: function (origin, destination, direction) {
-          if (origin.anchor === 'fourthPage' && direction !== 'up') {
-            $('#menu').attr('style', 'display: none !important');
-            $('#toTop').attr('style', 'display: block !important');
-          } else if (origin.anchor === 'footer') {
-            $('#menu').attr('style', 'display: block !important');
-            $('#toTop').attr('style', 'display: none !important');
-          } else {
-            $('#menu').attr('style', 'display: block !important');
+          let width = $(window).width();
+          if (width >= 768) {
+            if (origin.anchor === 'fourthPage' && direction !== 'up') {
+              $('#menu').attr('style', 'display: none !important');
+              $('#toTop').attr('style', 'display: block !important');
+            } else if (origin.anchor === 'footer') {
+              $('#menu').attr('style', 'display: block !important');
+              $('#toTop').attr('style', 'display: none !important');
+            } else {
+              $('#menu').attr('style', 'display: block !important');
+            }
           }
         },
       });
