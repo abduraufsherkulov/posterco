@@ -31,8 +31,8 @@
     >
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          Poster <br />
-          & Co</a
+          POSTER <br />
+          & CO</a
         >
         <button
           class="navbar-toggler"
@@ -101,21 +101,21 @@
     <ul class="d-md-block d-none" id="menu">
       <div style="text-align: center">
         <h1 id="logo">
-          Poster <br />
-          & Co
+          POSTER <br />
+          & CO
         </h1>
       </div>
-      <div class="container">
+      <div class="container text-center">
         <li data-menuanchor="firstPage" class="active">
-          <a href="#firstPage">Одежда</a>
+          <a href="#firstPage">Чехлы для телефонов</a>
         </li>
         <li data-menuanchor="secondPage">
-          <a href="#secondPage">Чехлы для телефонов</a>
+          <a href="#secondPage">Одежда</a>
         </li>
         <li data-menuanchor="thirdPage">
           <a href="#thirdPage">Картины Digital art</a>
         </li>
-        <li data-menuanchor="footer"><a href="#footer">О нас</a></li>
+        <li data-menuanchor="fourthPage"><a href="#fourthPage">О нас</a></li>
       </div>
     </ul>
     <div id="fullpage">
@@ -287,15 +287,31 @@
           </div>
         </div>
       </div>
+      <div class="section">
+        <div class="container dummy">
+          <div class="row">
+            <div style="width: 35%">
+              <p class="text-start">
+                О нас <br />
+                Мы создаём уникальные аксессуары, что в свою очередь подарит вам
+                уникальность
+              </p>
+            </div>
+            <div style="width: 65%">
+              <img src="./imgs/last.png" alt="" srcset="" />
+            </div>
+          </div>
+        </div>
+      </div>
       <div id="foot" class="section fp-auto-height">
         <div class="container">
           <div class="row align-items-center">
             <div class="col-12 col-xl-4">
               <a style="text-decoration: none" href="tel:+998906000941"
-                ><h1>+99890-600-09-41</h1></a
+                ><h1 class="mt-3">+99890-600-09-41</h1></a
               >
             </div>
-            <div class="col-12 col-xl-4">
+            <div class="col-12 col-xl-4" style="height: 50%; margin-top: 80px">
               <div>
                 <a
                   target="_blank"
@@ -316,18 +332,16 @@
                 </p>
               </div>
             </div>
-            <div class="col-12 col-xl-4">
-              <h1>О нас</h1>
-              <p style="font-size: 20px">
-                Мы создаём уникальные аксессуары, что в свою очередь подарит вам
-                уникальность
-              </p>
-            </div>
+            <div class="col-12 col-xl-4"></div>
           </div>
         </div>
       </div>
     </div>
-
+    <div id="toTop">
+      <a href="#fourthPage">
+        <img src="./imgs/prev.svg" alt="" />
+      </a>
+    </div>
     <!-- Modal -->
     <div
       class="modal fade"
@@ -428,10 +442,28 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
     <script type="text/javascript">
       var myFullpage = new fullpage('#fullpage', {
-        sectionsColor: ['#FFF9D9', '#FFE6E6', '#DBF1E7', 'black'],
-        anchors: ['firstPage', 'secondPage', 'thirdPage', 'footer'],
+        sectionsColor: ['#FFF9D9', '#FFE6E6', '#DBF1E7', '#D8EEFF', 'black'],
+        anchors: [
+          'firstPage',
+          'secondPage',
+          'thirdPage',
+          'fourthPage',
+          'footer',
+        ],
         menu: '#menu',
         lazyLoad: true,
+
+        onLeave: function (origin, destination, direction) {
+          if (origin.anchor === 'fourthPage' && direction !== 'up') {
+            $('#menu').attr('style', 'display: none !important');
+            $('#toTop').attr('style', 'display: block !important');
+          } else if (origin.anchor === 'footer') {
+            $('#menu').attr('style', 'display: block !important');
+            $('#toTop').attr('style', 'display: none !important');
+          } else {
+            $('#menu').attr('style', 'display: block !important');
+          }
+        },
       });
     </script>
 
