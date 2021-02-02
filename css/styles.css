@@ -705,6 +705,10 @@ p {
     width: 164px;
   }
 
+  #about-us-text {
+    margin-top: 80px;
+  }
+
   .next,
   .prev {
     position: absolute;
@@ -791,6 +795,10 @@ p {
   }
   #third .third-slide {
     transform: rotateY(360deg) translateZ(370px) rotateY(-360deg);
+  }
+
+  #about-us-text {
+    margin-top: 80px;
   }
 
   #second {
